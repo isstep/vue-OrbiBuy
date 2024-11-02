@@ -19,7 +19,7 @@ function closeBanner() {
                 <a href="#" class="banner__learn-more">Learn More</a>
             </span>
             <button class="banner__close-button" @click="closeBanner" aria-label="Close banner">
-                <img src="/public/vector.png" alt="Close" class="close-icon" />
+                <img src="/vector.png" alt="Close" class="close-icon" />
             </button>
         </div>
     </div>
@@ -28,7 +28,7 @@ function closeBanner() {
 <style scoped>
 .banner {
     width: 100%;
-    background-image: url('/public/123.png');
+    background-image: url('/123.png');
     max-height: 63px;
     position: relative;
     background-size: cover;
