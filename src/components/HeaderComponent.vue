@@ -5,7 +5,7 @@
     <header class="header">
         <div class="header__container">
             <div class="header__logo">
-                <img src="/public/Symbol.png" alt="Logo" class="logo-img" />
+                <img src="/Symbol.png" alt="Logo" class="logo-img" />
                 Orbibuy
             </div>
             <nav class="header__nav">

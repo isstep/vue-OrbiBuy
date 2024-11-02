@@ -19,7 +19,7 @@ function closeBanner() {
                 <a href="#" class="banner__learn-more">Learn More</a>
             </span>
             <button class="banner__close-button" @click="closeBanner" aria-label="Close banner">
-                <img src="/vector.png" alt="Close" class="close-icon" />
+                <img src="/Vector.png" alt="Close" class="close-icon" />
             </button>
         </div>
     </div>
