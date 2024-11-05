@@ -1,24 +1,51 @@
 <script setup>
+import { ref } from 'vue';
+
+const activeLink = ref('Home');
+
+function setActive(link) {
+  activeLink.value = link;
+}
 </script>
 
 <template>
-    <header class="header">
-        <div class="header__container">
-            <div class="header__logo">
-                <img src="/Symbol.png" alt="Logo" class="logo-img" />
-                Orbibuy
-            </div>
-            <nav class="header__nav">
-                <ul class="header__menu">
-                    <li class="header__menu-item"><a href="#" class="header__link">Home</a></li>
-                    <li class="header__menu-item"><a href="#" class="header__link">About Us</a></li>
-                    <li class="header__menu-item"><a href="#" class="header__link">Properties</a></li>
-                    <li class="header__menu-item"><a href="#" class="header__link">Services</a></li>
-                </ul>
-            </nav>
-            <button class="header__button">Contact Us</button>
-        </div>
-    </header>
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">
+        <img src="/Symbol.png" alt="Logo" class="logo-img" />
+        Orbibuy
+      </div>
+      <nav class="header__nav">
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a href="#" 
+               class="header__link" 
+               :class="{ active: activeLink === 'Home' }" 
+               @click="setActive('Home')">Home</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" 
+               class="header__link" 
+               :class="{ active: activeLink === 'About Us' }" 
+               @click="setActive('About Us')">About Us</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" 
+               class="header__link" 
+               :class="{ active: activeLink === 'Properties' }" 
+               @click="setActive('Properties')">Properties</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" 
+               class="header__link" 
+               :class="{ active: activeLink === 'Services' }" 
+               @click="setActive('Services')">Services</a>
+          </li>
+        </ul>
+      </nav>
+      <button class="header__button">Contact Us</button>
+    </div>
+  </header>
 </template>
 
 <style scoped>
@@ -78,10 +105,13 @@
 }
 
 .header__link:hover {
+    color: rgba(112, 59, 247, 1);
+}
+
+.header__link.active {
     background-color: rgba(20, 20, 20, 1);
-    color: #ffffff;
+    color: rgba(112, 59, 247, 1);
     border-color: rgb(38, 38, 38);
-    cursor: pointer;
 }
 
 .header__button {
