@@ -15,7 +15,7 @@ function closeBanner() {
         <div class="banner__overlay"></div>
         <div class="banner__container">
             <span class="banner__text">
-                ⭐ Discover Your Dream Property with Orbibuy
+                ⭐Discover Your Dream Property with Orbibuy
                 <a href="#" class="banner__learn-more">Learn More</a>
             </span>
             <button class="banner__close-button" @click="closeBanner" aria-label="Close banner">
@@ -34,11 +34,11 @@ function closeBanner() {
     background-size: cover;
     background-position: center;
     color: #ffffff;
-    border-bottom: 1.5px solid rgb(38, 38, 38);
     display: flex;
     align-items: center;
     overflow: hidden;
     transition: opacity 0.5s ease;
+    border-bottom: 1.5px solid rgb(38, 38, 38);
 }
 
 .fade-out {
@@ -59,7 +59,6 @@ function closeBanner() {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 12px 20px;
     display: flex;
@@ -70,8 +69,6 @@ function closeBanner() {
 .banner__text {
     font-family: 'Urbanist', sans-serif;
     font-size: 1.125rem;
-    font-weight: 500;
-    line-height: 1.5;
     text-align: center;
     flex-grow: 1;
 }
@@ -102,13 +99,15 @@ function closeBanner() {
     height: 12px;
 }
 
-@media (max-width: 600px) {
-    .banner__text {
-        font-size: 1rem;
-    }
-    .banner__close-button {
-        width: 28px;
-        height: 28px;
-    }
+@media (min-width: 1920px) {
+.banner__container {
+    max-width: 1920px;
+}
+}
+
+@media (max-width: 1440px) {
+.banner__container {
+    max-width: 1440px;
+}
 }
 </style>

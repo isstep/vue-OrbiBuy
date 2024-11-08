@@ -1,10 +1,19 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const activeLink = ref('Home');
+const isMenuOpen = ref(false);
+const router = useRouter();
 
-function setActive(link) {
+function setActive(link, route) {
   activeLink.value = link;
+  isMenuOpen.value = false; 
+  router.push(route); 
+}
+
+function toggleMenu() {
+  isMenuOpen.value = !isMenuOpen.value;
 }
 </script>
 
@@ -12,119 +21,248 @@ function setActive(link) {
   <header class="header">
     <div class="header__container">
       <div class="header__logo">
-        <img src="/Symbol.png" alt="Logo" class="logo-img" />
-        Orbibuy
+        <img src="/Symbol.png" alt="Logo" class="header__logo-img" />
+        <span class="header__brand-name">Orbibuy</span>
       </div>
-      <nav class="header__nav">
+      
+      <nav class="header__nav" :class="{ 'header__nav--open': isMenuOpen }">
+        <button class="header__nav-close" @click="toggleMenu">
+  <span class="header__nav-close-bar"></span>
+  <span class="header__nav-close-bar"></span>
+  <span class="header__nav-close-bar"></span>
+</button>
+        
         <ul class="header__menu">
-          <li class="header__menu-item">
-            <a href="#" 
-               class="header__link" 
-               :class="{ active: activeLink === 'Home' }" 
-               @click="setActive('Home')">Home</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" 
-               class="header__link" 
-               :class="{ active: activeLink === 'About Us' }" 
-               @click="setActive('About Us')">About Us</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" 
-               class="header__link" 
-               :class="{ active: activeLink === 'Properties' }" 
-               @click="setActive('Properties')">Properties</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#" 
-               class="header__link" 
-               :class="{ active: activeLink === 'Services' }" 
-               @click="setActive('Services')">Services</a>
+          <li v-for="link in ['Home', 'About Us', 'Properties', 'Services']" :key="link" class="header__menu-item">
+            <router-link 
+              :to="link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`" 
+              class="header__link" 
+              :class="{ 'active': activeLink === link }" 
+              @click="setActive(link, link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`)"
+            >
+              {{ link }}
+            </router-link>
           </li>
         </ul>
       </nav>
+      
       <button class="header__button">Contact Us</button>
+      
+      <button class="header__burger" @click="toggleMenu">
+        <span :class="{ 'header__burger-bar': true, 'header__burger-bar--active': isMenuOpen }"></span>
+        <span :class="{ 'header__burger-bar': true, 'header__burger-bar--active': isMenuOpen }"></span>
+        <span :class="{ 'header__burger-bar': true, 'header__burger-bar--active': isMenuOpen }"></span>
+      </button>
     </div>
   </header>
 </template>
 
 <style scoped>
 .header {
-    width: 100%;
-    background-color: rgba(26, 26, 26, 1);
-    position: sticky; 
-    z-index: 1000;
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1.5px solid rgb(38, 38, 38);
 }
 
 .header__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 35px;
+  margin: 0 auto;
 }
 
 .header__logo {
-    font-size: 1.4em;
-    font-family: 'Urbanist', sans-serif;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
 }
 
-.logo-img {
-    width: 48px;
-    height: 48px;
-    margin-right: 10px;
+.header__logo-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
+
+.header__brand-name {
+  color: #ffffff;
+  font-size: 20px;
+}
+
 
 .header__nav {
-    flex-grow: 1;
-    text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 .header__menu {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header__menu-item {
+  margin-right: -9px;
 }
 
 .header__link {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 14px 24px;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 16px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .header__link:hover {
-    color: rgba(112, 59, 247, 1);
+  color: rgba(112, 59, 247, 1);
 }
 
 .header__link.active {
-    background-color: rgba(20, 20, 20, 1);
-    color: rgba(112, 59, 247, 1);
-    border-color: rgb(38, 38, 38);
+  background-color: rgba(20, 20, 20, 1);
+  color: #7700ff;
+  border-color: rgb(38, 38, 38);
+}
+
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header__burger-bar {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.header__burger-bar--active:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.header__burger-bar--active:nth-child(2) {
+  opacity: 0;
+}
+
+.header__burger-bar--active:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .header__button {
-    background-color: rgba(20, 20, 20, 1);
-    color: #ffffff;
-    border: 2px solid rgb(38, 38, 38);
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 10px;
+  background-color: rgba(20, 20, 20, 1);
+  color: #ffffff;
+  border: 1px solid rgb(38, 38, 38);
+  padding: 14px 24px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-radius: 10px;
 }
 
 .header__button:hover {
-    background-color: rgba(0, 0, 0, 0.394);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+@media (max-width: 900px) {
+  .header__burger {
+    display: flex;
+  }
+
+  .header__nav {
+    display: none;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 26, 0.95);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transition: transform 0.3s ease;
+    transform: translateY(-100%);
+    z-index: 999;
+  }
+
+  .header__nav--open {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .header__menu {
+    flex-direction: column;
+  }
+
+  .header__menu-item {
+    margin: 10px 0;
+  }
+
+  .header__link {
+    font-size: 1.2rem;
+  }
+
+  .header__logo-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+
+  .header__nav--open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(26, 26, 26);
+    z-index: 999;
+  }
+
+  .header__nav-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.header__nav-close-bar {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+
+.header__nav--open .header__nav-close-bar:nth-child(1) {
+  transform: rotate(39deg) translate(5px, 5px);
+}
+
+.header__nav--open .header__nav-close-bar:nth-child(2) {
+  opacity: 0; 
+  transform: translateX(-80%); 
+}
+
+.header__nav--open .header__nav-close-bar:nth-child(3) {
+  transform: rotate(-46deg) translate(5px, -5px);
+}
 }
 </style>

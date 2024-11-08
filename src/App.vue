@@ -14,9 +14,7 @@ function handleBannerClose() {
   <div class="app">
     <BannerComponent @close="handleBannerClose" />
     <HeaderComponent />
-    <main class="app__content">
-      <p class="app__description">Discover Your Dream Property with Orbibuy</p>
-    </main>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -33,7 +31,7 @@ function handleBannerClose() {
 
 .app__content {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1920px;
   padding: 20px;
 }
 
