@@ -26,7 +26,7 @@ function handleBannerClose() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(20, 20, 20, 1);
+  background-color:rgba(20, 20, 20, 1);
 }
 
 .app__content {

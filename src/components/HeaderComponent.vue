@@ -35,7 +35,7 @@ function toggleMenu() {
         <ul class="header__menu">
           <li v-for="link in ['Home', 'About Us', 'Properties', 'Services']" :key="link" class="header__menu-item">
             <router-link 
-              :to="link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`" 
+              :to="link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`"  
               class="header__link" 
               :class="{ 'active': activeLink === link }" 
               @click="setActive(link, link === 'Home' ? '/' : `/${link.toLowerCase().replace(' ', '-')}`)"
@@ -71,10 +71,9 @@ function toggleMenu() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px 35px;
-  margin: 0 auto;
+  margin: 0 86px;
+  padding: 12px 36px;
+
 }
 
 .header__logo {
@@ -83,9 +82,9 @@ function toggleMenu() {
 }
 
 .header__logo-img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
+  width: 32.5px;
+  height: 32.5px;
+  margin-right: 6px;
 }
 
 .header__brand-name {
@@ -96,7 +95,7 @@ function toggleMenu() {
 
 .header__nav {
   display: flex;
-  align-items: center;
+  align-items: center;  
 }
 
 .header__menu {
@@ -104,17 +103,17 @@ function toggleMenu() {
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 0px;
+  margin-left: 40px;
 }
 
-.header__menu-item {
-  margin-right: -9px;
-}
 
-.header__link {
+.header__link { 
   color: #ffffff;
   text-decoration: none;
-  font-size: 1.1rem;
-  padding: 16px 20px;
+  font-size: 14px;
+  padding: 14px 19px;
+  font-family: Urbanist, sans-serif;
   border: 1px solid transparent;
   border-radius: 10px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -164,15 +163,16 @@ function toggleMenu() {
   background-color: rgba(20, 20, 20, 1);
   color: #ffffff;
   border: 1px solid rgb(38, 38, 38);
-  padding: 14px 24px;
+  padding: 14px 20px;
+  margin-right: 14px;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 14px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   border-radius: 10px;
 }
 
 .header__button:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(49, 49, 49, 0.171);
 }
 
 
