@@ -1,51 +1,49 @@
 <script setup>
-import { reactive, onMounted, watch } from "vue";
-import gsap from "gsap";
+import { reactive, onMounted, watch } from 'vue'
+import gsap from 'gsap'
 
 const numbers = reactive({
   customers: 200,
   properties: 10,
-  experience: 16,
-});
-
+  experience: 16
+})
 
 const tweened = reactive({
   customers: 0,
   properties: 0,
-  experience: 0,
-});
+  experience: 0
+})
 
 watch(
   () => numbers.customers,
   (newVal) => {
-    gsap.to(tweened, { duration: 1, customers: newVal });
+    gsap.to(tweened, { duration: 1, customers: newVal })
   }
-);
+)
 
 watch(
   () => numbers.properties,
   (newVal) => {
-    gsap.to(tweened, { duration: 1, properties: newVal });
+    gsap.to(tweened, { duration: 1, properties: newVal })
   }
-);
+)
 
 watch(
   () => numbers.experience,
   (newVal) => {
-    gsap.to(tweened, { duration: 1, experience: newVal });
+    gsap.to(tweened, { duration: 1, experience: newVal })
   }
-);
+)
 
 onMounted(() => {
   gsap.to(tweened, {
     duration: 1,
     customers: numbers.customers,
     properties: numbers.properties,
-    experience: numbers.experience,
-  });
-});
+    experience: numbers.experience
+  })
+})
 </script>
-
 
 <template>
   <main class="home">
@@ -81,13 +79,38 @@ onMounted(() => {
         <img src="/Container2.png" alt="Beautiful property" class="home__image-img" />
       </div>
       <div class="home__linkimage">
-      <img src="/Sub Container.png">
+        <img src="/Sub Container.png" />
+      </div>
     </div>
+
+    <div class="home__card-links">
+  <div class="home__card-links-container ">
+    <div class="home__card-link home__card-link--with-offset">
+      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
+      <img src="/dream-home.png" alt="dream home" class="home__card-link-img">
+      <a href="#" class="home__card-link-title">Find Your Dream Home</a>
     </div>
+    <div class="home__card-link">
+      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
+      <img src="/property-value.png" alt="dream home" class="home__card-link-img">
+      <a href="#" class="home__card-link-title">Unlock Property Value</a>
+    </div>
+    <div class="home__card-link">
+      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
+      <img src="/property-management.png" alt="dream home" class="home__card-link-img">
+      <a href="#" class="home__card-link-title">Effortless Property Management</a>
+    </div>
+    <div class="home__card-link home__card-link--with-set">
+      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
+      <img src="/smart-investments.png" alt="dream home" class="home__card-link-img">
+      <a href="#" class="home__card-link-title">Smart Investments, Informed Decisions</a>
+    </div>
+  </div>
+</div>
   </main>
 </template>
 
-<style scoped>  
+<style scoped>
 .home {
   width: 100%;
 }
@@ -96,14 +119,13 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0; 
-
+  margin: 0;
 }
 
 .home__content {
   max-width: 600px;
   height: 622px;
-  margin-left: 120px; 
+  margin-left: 120px;
 }
 
 .home__description {
@@ -113,7 +135,6 @@ onMounted(() => {
   font-weight: semi-bold;
   color: #ffffff;
   line-height: 55.2px;
-
 }
 
 .home__text {
@@ -134,7 +155,9 @@ onMounted(() => {
   font-size: 13.8px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .home__button--primary {
@@ -178,10 +201,9 @@ onMounted(() => {
 }
 
 .home__card-value {
-  font-size: 30px;  
+  font-size: 30px;
   font-weight: bold;
-  color: #ffffff; 
-  
+  color: #ffffff;
 }
 
 .home__card-text {
@@ -190,17 +212,83 @@ onMounted(() => {
 }
 
 .home__image-img {
-margin: 0 ;
-width: 746px;
-height: 622px;
-gap: 0px;
-opacity: 0px;
+  margin: 0;
+  width: 730px;
+  height: 622px;
+  gap: 0px;
+  opacity: 0px;
+}
 
-  }
+.home__linkimage {
+  position: absolute;
+  margin-left: 717px;
+  margin-bottom: 295px;
+  width: 129px;
+  height: 129px;
+}
 
-  .home__linkimage{
-    position: absolute;
-    margin-left: 717px;
-    margin-bottom: 295px;
-  }
+.home__card-links {
+  width: 100%;
+  height: 190px;
+  background-color: rgba(26, 26, 26, 1);
+}
+
+.home__card-links-container {
+  position: absolute;
+  border-top: 3px solid #262626;
+  border-bottom: 3px solid #262626;
+  margin: 5px 0;
+  background-color: rgba(20, 20, 20, 1);
+  height: 180px;
+  width: 100%;
+  display: flex;
+  gap: 13px;
+
+}
+
+.home__card-link {
+  color: #ffffff; /* text-violet-400 */
+  background-color: #1a1a1a; /* bg-graphite-black */
+  border-radius: 10px; /* rounded-10px */
+  box-shadow: 0 0 0 1px #262626; /* ring-signal-black */
+
+  display: flex;
+  flex-direction: column;  /* Для вертикального выравнивания */
+  justify-content: center;  /* Вертикальное выравнивание */
+  align-items: center;
+  
+  width: 455px;
+  margin: 10px 0;
+  padding: 30px 16px 30px 16px;
+  border-radius: 10px;
+  position: relative; /* Добавляем относительное позиционирование */
+}
+
+.home__card-link--with-offset {
+  margin-left: 10px; /* Добавляем отступ сверху */
+}
+
+.home__card-link--with-set{
+  margin-right: 10px;
+}
+
+.home__card-link-title{
+  font-family: Urbanist;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.home__card-link-img{
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.home__card-link-arrow{
+  position: absolute;  /* Абсолютное позиционирование */
+  top: 26px;
+  right: 26px;
+  width: 19px;
+  height: 19px;
+}
 </style>
