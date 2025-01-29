@@ -84,29 +84,143 @@ onMounted(() => {
     </div>
 
     <div class="home__card-links">
-  <div class="home__card-links-container ">
-    <div class="home__card-link home__card-link--with-offset">
-      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
-      <img src="/dream-home.png" alt="dream home" class="home__card-link-img">
-      <a href="#" class="home__card-link-title">Find Your Dream Home</a>
+      <div class="home__card-links-container">
+        <div class="home__card-link home__card-link--with-offset">
+          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
+          <img src="/dream-home.png" alt="dream home" class="home__card-link-img" />
+          <a href="#" class="home__card-link-title">Find Your Dream Home</a>
+        </div>
+        <div class="home__card-link">
+          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
+          <img src="/property-value.png" alt="dream home" class="home__card-link-img" />
+          <a href="#" class="home__card-link-title">Unlock Property Value</a>
+        </div>
+        <div class="home__card-link">
+          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
+          <img src="/property-management.png" alt="dream home" class="home__card-link-img" />
+          <a href="#" class="home__card-link-title">Effortless Property Management</a>
+        </div>
+        <div class="home__card-link home__card-link--with-set">
+          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
+          <img src="/smart-investments.png" alt="dream home" class="home__card-link-img" />
+          <a href="#" class="home__card-link-title">Smart Investments, Informed Decisions</a>
+        </div>
+      </div>
     </div>
-    <div class="home__card-link">
-      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
-      <img src="/property-value.png" alt="dream home" class="home__card-link-img">
-      <a href="#" class="home__card-link-title">Unlock Property Value</a>
+
+    <div class="home__FetueredProperties">
+      <img src="/abstract-stars.png" alt="stars" class="home__FetueredProperties--stars" />
+      <span class="home__FetueredProperties--text">Featured Properties</span>
+      <p class="home__FetueredProperties--description">
+        Explore our handpicked selection of featured properties. Each listing offers a glimpse into
+        exceptional homes and investments available through Estatein. Click "View Details" for more
+        information.
+      </p>
+      <button class="home__FetueredProperties--button">View All Properties</button>
+
+      <div class="home__FetueredProperties--cards">
+        <div class="home__FetueredProperties--card">
+          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
+          <div class="home__FetueredProperties--card-content">
+            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
+            <span class="home__FetueredProperties--card-description">
+              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
+              <a class="home__FetueredProperties--card-link">Read More</a>
+            </span>
+
+            <div class="home__FetueredProperties--card-elements">
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
+                4-Bedroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
+                3-Bathroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
+                Villa
+              </div>
+            </div>
+            <div class="home__FetueredProperties--card-price">
+              <span class="home__FetueredProperties--card-price_label">Price</span>
+              <span class="home__FetueredProperties--card-price_value">$550,000</span>
+            </div>
+            <button class="home__FetueredProperties--card-button">View Property Details</button>
+          </div>
+        </div>
+        <div class="home__FetueredProperties--card">
+          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
+          <div class="home__FetueredProperties--card-content">
+            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
+            <span class="home__FetueredProperties--card-description">
+              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
+              <a class="home__FetueredProperties--card-link">Read More</a>
+            </span>
+
+            <div class="home__FetueredProperties--card-elements">
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
+                4-Bedroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
+                3-Bathroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
+                Villa
+              </div>
+            </div>
+            <div class="home__FetueredProperties--card-price">
+              <span class="home__FetueredProperties--card-price_label">Price</span>
+              <span class="home__FetueredProperties--card-price_value">$550,000</span>
+            </div>
+            <button class="home__FetueredProperties--card-button">View Property Details</button>
+          </div>
+        </div>
+        <div class="home__FetueredProperties--card">
+          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
+          <div class="home__FetueredProperties--card-content">
+            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
+            <span class="home__FetueredProperties--card-description">
+              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
+              <a class="home__FetueredProperties--card-link">Read More</a>
+            </span>
+
+            <div class="home__FetueredProperties--card-elements">
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
+                4-Bedroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
+                3-Bathroom
+              </div>
+              <div class="home__FetueredProperties--card-feature">
+                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
+                Villa
+              </div>
+            </div>
+            <div class="home__FetueredProperties--card-price">
+              <span class="home__FetueredProperties--card-price_label">Price</span>
+              <span class="home__FetueredProperties--card-price_value">$550,000</span>
+            </div>
+            <button class="home__FetueredProperties--card-button">View Property Details</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="home__FetueredProperties--page-switch">
+        <span>01 <span>of 10</span></span>
+        <button class="home__FetueredProperties--page-switch-button-arrow">
+          <img class="home__FetueredProperties--page-switch-arrow" src="/public/Vector (Stroke).png" />
+        </button>
+        <button>
+          <img class="home__FetueredProperties--page-switch-arrow" src="/public/Vector (Stroke2).png" />
+        </button>
+      </div>
     </div>
-    <div class="home__card-link">
-      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
-      <img src="/property-management.png" alt="dream home" class="home__card-link-img">
-      <a href="#" class="home__card-link-title">Effortless Property Management</a>
-    </div>
-    <div class="home__card-link home__card-link--with-set">
-      <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow">
-      <img src="/smart-investments.png" alt="dream home" class="home__card-link-img">
-      <a href="#" class="home__card-link-title">Smart Investments, Informed Decisions</a>
-    </div>
-  </div>
-</div>
   </main>
 </template>
 
@@ -130,6 +244,7 @@ onMounted(() => {
 
 .home__description {
   margin-top: 100px;
+  font-weight: 600;
   font-size: 46px;
   font-family: Urbanist, sans-serif;
   font-weight: semi-bold;
@@ -221,7 +336,7 @@ onMounted(() => {
 
 .home__linkimage {
   position: absolute;
-  margin-left: 717px;
+  left: 47.2%;
   margin-bottom: 295px;
   width: 129px;
   height: 129px;
@@ -243,52 +358,233 @@ onMounted(() => {
   width: 100%;
   display: flex;
   gap: 13px;
-
 }
 
 .home__card-link {
-  color: #ffffff; /* text-violet-400 */
-  background-color: #1a1a1a; /* bg-graphite-black */
-  border-radius: 10px; /* rounded-10px */
-  box-shadow: 0 0 0 1px #262626; /* ring-signal-black */
+  color: #ffffff;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px #262626;
 
   display: flex;
-  flex-direction: column;  /* Для вертикального выравнивания */
-  justify-content: center;  /* Вертикальное выравнивание */
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  
+
   width: 455px;
   margin: 10px 0;
   padding: 30px 16px 30px 16px;
   border-radius: 10px;
-  position: relative; /* Добавляем относительное позиционирование */
+  position: relative;
 }
 
 .home__card-link--with-offset {
-  margin-left: 10px; /* Добавляем отступ сверху */
+  margin-left: 10px;
 }
 
-.home__card-link--with-set{
+.home__card-link--with-set {
   margin-right: 10px;
 }
 
-.home__card-link-title{
+.home__card-link-title {
   font-family: Urbanist;
   font-size: 16px;
   line-height: 24px;
+  font-weight: 600;
 }
 
-.home__card-link-img{
+.home__card-link-img {
   width: 60px;
   height: 60px;
   margin-bottom: 10px;
 }
 
-.home__card-link-arrow{
-  position: absolute;  /* Абсолютное позиционирование */
+.home__card-link-arrow {
+  position: absolute;
   top: 26px;
   right: 26px;
   width: 19px;
   height: 19px;
+}
+
+.home__FetueredProperties {
+  margin-left: 120px;
+  margin-top: 90px;
+}
+
+.home__FetueredProperties--stars {
+  width: 54.72px;
+  height: 24px;
+  margin-left: -10px;
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.home__FetueredProperties--text {
+  font-size: 38px;
+  line-height: 57px;
+  font-weight: 600;
+}
+
+.home__FetueredProperties--description {
+  width: 975px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: rgba(153, 153, 153, 1);
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.home__FetueredProperties--button {
+  padding: 14px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  background-color: rgba(26, 26, 26, 1);
+  color: #ffffff;
+  border: 1px solid rgb(38, 38, 38);
+  position: absolute;
+  margin-top: -50px;
+  right: 120px;
+}
+
+.home__FetueredProperties--button:hover {
+  background-color: rgba(100, 50, 230, 1);
+}
+.home__FetueredProperties--cards {
+  display: flex;
+  gap: 20px;
+}
+.home__FetueredProperties--card {
+  width: 413.33px;
+  height: 549px;
+  padding: 28.5px;
+  border-radius: 12px;
+  border: 2px solid rgba(38, 38, 38, 1);
+  background-color: rgba(20, 20, 20, 1);
+  margin-top: 60px;
+}
+
+.home__FetueredProperties--card-image {
+  border-radius: 10px;
+}
+
+.home__FetueredProperties--card-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 353.33px;
+  height: 214px;
+  gap: 24px;
+}
+
+.home__FetueredProperties--card-title {
+  margin-top: 20px;
+  width: 353.33px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.home__FetueredProperties--card-description {
+  font-family: Urbanist;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: rgba(153, 153, 153, 1);
+  margin-top: -20px;
+}
+
+.home__FetueredProperties--card-link {
+  font-family: 'Urbanist', sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 24px;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  color: rgba(255, 255, 255, 1);
+  transition: color 0.3s ease;
+}
+
+.home__FetueredProperties--card-elements {
+  display: flex;
+  width: 353px;
+  height: 33px;
+  gap: 4px;
+}
+
+.home__FetueredProperties--card-feature {
+  display: flex;
+  background-color: rgba(26, 26, 26, 1);
+  border: 1px solid rgba(38, 38, 38, 1);
+  border-radius: 28px;
+  padding: 4px 14px 5px 13.5px;
+  opacity: 0px;
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.home__FetueredProperties--card-feature-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.home__FetueredProperties--card-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.home__FetueredProperties--card-price_label {
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: rgba(153, 153, 153, 1);
+}
+
+.home__FetueredProperties--card-price_value {
+  font-family: Urbanist;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.home__FetueredProperties--card-button {
+  width: 227.33px;
+  height: 49px;
+  margin-left: 16px;
+  border-radius: 8px;
+
+  font-family: Urbanist;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+
+  background-color: rgba(112, 59, 247, 1);
+  color: #ffffff;
+  border: 1px solid rgba(112, 59, 247, 0.8);
+}
+
+.home__FetueredProperties--card-button:hover {
+  background-color: rgba(100, 50, 230, 1);
+}
+
+.home__FetueredProperties--page-switch {
+  margin-top: 30px;
+  width: 1280px;
+  height: 60px;
+  border-top: 1px solid rgba(38, 38, 38, 1);
+
+  display: flex;
+  justify-content: space-between;
+  opacity: 0px;
 }
 </style>
