@@ -1,50 +1,155 @@
 <script setup>
-import { reactive, onMounted, watch } from 'vue'
-import gsap from 'gsap'
+import { reactive } from 'vue'
+import AnimatedNumbersSection from '@/components/AnimatedNumbersSection.vue'
+import LinkCard from '@/components/LinkCard.vue'
+import PropertyCard from '@/components/PropertyCard.vue'
+import HomeSection from '@/components/HomeSection.vue'
+import TestimonialCard from '@/components/TestimonialCard.vue'
+import FaqItem from '@/components/FaqItem.vue'
+
 
 const numbers = reactive({
   customers: 200,
   properties: 10,
   experience: 16
 })
-
-const tweened = reactive({
-  customers: 0,
-  properties: 0,
-  experience: 0
-})
-
-watch(
-  () => numbers.customers,
-  (newVal) => {
-    gsap.to(tweened, { duration: 1, customers: newVal })
+const linksData = reactive([
+  {
+    imgSrc: '/dream-home.png',
+    imgAlt: 'dream home',
+    title: 'Find Your Dream Home',
+    arrowSrc: '/home__arrow.png',
+    specialClass: 'home__card-link--with-offset'
+  },
+  {
+    imgSrc: '/property-value.png',
+    imgAlt: 'property value',
+    title: 'Unlock Property Value',
+    arrowSrc: '/home__arrow.png'
+  },
+  {
+    imgSrc: '/property-management.png',
+    imgAlt: 'property management',
+    title: 'Effortless Property Management',
+    arrowSrc: '/home__arrow.png'
+  },
+  {
+    imgSrc: '/smart-investments.png',
+    imgAlt: 'smart investments',
+    title: 'Smart Investments, Informed Decisions',
+    arrowSrc: '/home__arrow.png',
+    specialClass: 'home__card-link--with-set'
   }
-)
-
-watch(
-  () => numbers.properties,
-  (newVal) => {
-    gsap.to(tweened, { duration: 1, properties: newVal })
+])
+const featuredProperties = reactive([
+  {
+    id: 1,
+    imageSrc: '/Villa.png',
+    title: 'Seaside Serenity Villa',
+    description: 'A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...',
+    features: [
+      { icon: '/Icon1.png', text: '4-Bedroom' },
+      { icon: '/Icon2.png', text: '3-Bathroom' },
+      { icon: '/Icon3.png', text: 'Villa' }
+    ],
+    price: '$550,000',
+    detailsLink: '/property/seaside-serenity-villa'
+  },
+  {
+    id: 2,
+    imageSrc: '/HomeTower.png',
+    title: 'Metropolitan Modern Mansion',
+    description: 'Experience city living at its finest in this sleek 5-bedroom penthouse...',
+    features: [
+      { icon: '/Icon1.png', text: '5-Bedroom' },
+      { icon: '/Icon2.png', text: '4-Bathroom' },
+      { icon: '/Icon3.png', text: 'Penthouse' }
+    ],
+    price: '$1,200,000',
+    detailsLink: '/property/metropolitan-mansion'
+  },
+  {
+    id: 3,
+    imageSrc: '/Tower.png',
+    title: 'Rustic Countryside Retreat',
+    description:
+      'Escape to the tranquility of the countryside in this charming 3-bedroom cottage...',
+    features: [
+      { icon: '/Icon1.png', text: '3-Bedroom' },
+      { icon: '/Icon2.png', text: '2-Bathroom' },
+      { icon: '/Icon3.png', text: 'Cottage' }
+    ],
+    price: '$350,000',
+    detailsLink: '/property/rustic-retreat'
   }
-)
-
-watch(
-  () => numbers.experience,
-  (newVal) => {
-    gsap.to(tweened, { duration: 1, experience: newVal })
+])
+const testimonialsData = reactive([
+  {
+    id: 1,
+    quote:
+      'Working with Orbibuy was a dream come true. They found us the perfect home faster than we ever thought possible.',
+    authorName: 'Sarah Jones',
+    authorLocation: 'Sunnyvale, CA',
+    authorImage: '/Profile1.png',
+    rating: 5
+  },
+  {
+    id: 2,
+    quote:
+      "The team's expertise in property management is unmatched. They handle everything effortlessly.",
+    authorName: 'Michael Smith',
+    authorLocation: 'Austin, TX',
+    authorImage: '/Profile2.png',
+    rating: 5
+  },
+  {
+    id: 3,
+    quote: 'Incredible attention to detail and market knowledge. Highly recommend for investments.',
+    authorName: 'Emily White',
+    authorLocation: 'New York, NY',
+    authorImage: '/Profile3.png',
+    rating: 4
   }
-)
-
-onMounted(() => {
-  gsap.to(tweened, {
-    duration: 1,
-    customers: numbers.customers,
-    properties: numbers.properties,
-    experience: numbers.experience
-  })
-})
+])
+const faqData = reactive([
+  {
+    id: 1,
+    question: 'How do I start searching for a property?',
+    answer:
+      "You can start by using our advanced search filters on the 'Browse Properties' page. Filter by location, property type, price range, and more to narrow down your options. You can also contact one of our agents for personalized assistance."
+  },
+  {
+    id: 2,
+    question: 'What documents do I need to buy a house?',
+    answer:
+      "Generally, you'll need proof of income (pay stubs, tax returns), identification (driver's license, passport), bank statements, and pre-approval for a mortgage if you're financing. Requirements can vary, so consult with your agent or lender."
+  },
+  {
+    id: 3,
+    question: 'What is property management?',
+    answer:
+      'Property management involves overseeing residential, commercial, or industrial real estate. This includes managing tenants, collecting rent, handling maintenance and repairs, and ensuring the property complies with all regulations. Orbibuy offers comprehensive property management services.'
+  }
+])
+const propertiesPagination = reactive({ currentPage: 1, totalPages: 10 })
+const testimonialsPagination = reactive({ currentPage: 1, totalPages: 5 })
+function nextPage(pagination) {
+  if (pagination.currentPage < pagination.totalPages) {
+    pagination.currentPage++
+  }
+}
+function prevPage(pagination) {
+  if (pagination.currentPage > 1) {
+    pagination.currentPage--
+  }
+}
+function handleViewDetails(link) {
+  console.log('View details for:', link)
+}
+function handleViewAll(section) {
+  console.log('View All clicked for:', section)
+}
 </script>
-
 <template>
   <main class="home">
     <div class="home__container">
@@ -60,20 +165,11 @@ onMounted(() => {
           <button class="home__button home__button--primary">Learn More</button>
           <button class="home__button home__button--secondary">Browse Properties</button>
         </div>
-        <div class="home__info-cards">
-          <div class="home__card">
-            <span class="home__card-value">{{ tweened.customers.toFixed(0) }}+</span>
-            <span class="home__card-text">Happy Customers</span>
-          </div>
-          <div class="home__card">
-            <span class="home__card-value">{{ tweened.properties.toFixed(0) }}k+</span>
-            <span class="home__card-text">Properties For Clients</span>
-          </div>
-          <div class="home__card">
-            <span class="home__card-value">{{ tweened.experience.toFixed(0) }}+</span>
-            <span class="home__card-text">Years of Experience</span>
-          </div>
-        </div>
+        <AnimatedNumbersSection
+          :target-customers="numbers.customers"
+          :target-properties="numbers.properties"
+          :target-experience="numbers.experience"
+        />
       </div>
       <div class="home__image">
         <img src="/Container2.png" alt="Beautiful property" class="home__image-img" />
@@ -82,509 +178,308 @@ onMounted(() => {
         <img src="/Sub Container.png" />
       </div>
     </div>
-
     <div class="home__card-links">
       <div class="home__card-links-container">
-        <div class="home__card-link home__card-link--with-offset">
-          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
-          <img src="/dream-home.png" alt="dream home" class="home__card-link-img" />
-          <a href="#" class="home__card-link-title">Find Your Dream Home</a>
-        </div>
-        <div class="home__card-link">
-          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
-          <img src="/property-value.png" alt="dream home" class="home__card-link-img" />
-          <a href="#" class="home__card-link-title">Unlock Property Value</a>
-        </div>
-        <div class="home__card-link">
-          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
-          <img src="/property-management.png" alt="dream home" class="home__card-link-img" />
-          <a href="#" class="home__card-link-title">Effortless Property Management</a>
-        </div>
-        <div class="home__card-link home__card-link--with-set">
-          <img src="/home__arrow.png" alt="arrow" class="home__card-link-arrow" />
-          <img src="/smart-investments.png" alt="dream home" class="home__card-link-img" />
-          <a href="#" class="home__card-link-title">Smart Investments, Informed Decisions</a>
-        </div>
+        <LinkCard
+          v-for="(link, index) in linksData"
+          :key="index"
+          :img-src="link.imgSrc"
+          :img-alt="link.imgAlt"
+          :title="link.title"
+          :arrow-src="link.arrowSrc"
+          :special-class="link.specialClass"
+          :href="link.href"
+        />
       </div>
     </div>
-
-    <div class="home__FetueredProperties">
-      <img src="/abstract-stars.png" alt="stars" class="home__FetueredProperties--stars" />
-      <span class="home__FetueredProperties--text">Featured Properties</span>
-      <p class="home__FetueredProperties--description">
-        Explore our handpicked selection of featured properties. Each listing offers a glimpse into
-        exceptional homes and investments available through Estatein. Click "View Details" for more
-        information.
-      </p>
-      <button class="home__FetueredProperties--button">View All Properties</button>
-
-      <div class="home__FetueredProperties--cards">
-        <div class="home__FetueredProperties--card">
-          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
-          <div class="home__FetueredProperties--card-content">
-            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
-            <span class="home__FetueredProperties--card-description">
-              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
-              <a class="home__FetueredProperties--card-link">Read More</a>
-            </span>
-
-            <div class="home__FetueredProperties--card-elements">
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
-                4-Bedroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
-                3-Bathroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
-                Villa
-              </div>
-            </div>
-            <div class="home__FetueredProperties--card-price">
-              <span class="home__FetueredProperties--card-price_label">Price</span>
-              <span class="home__FetueredProperties--card-price_value">$550,000</span>
-            </div>
-            <button class="home__FetueredProperties--card-button">View Property Details</button>
-          </div>
+    <div class="home__section-wrapper">
+      <HomeSection
+        title="Featured Properties"
+        description="Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein. Click 'View Details' for more information."
+        button-text="View All Properties"
+        :show-pagination="true"
+        :current-page="propertiesPagination.currentPage"
+        :total-pages="propertiesPagination.totalPages"
+        @button-click="handleViewAll('Properties')"
+        @prev-page="prevPage(propertiesPagination)"
+        @next-page="nextPage(propertiesPagination)"
+      >
+        <div class="property-cards-grid">
+          <PropertyCard
+            v-for="property in featuredProperties"
+            :key="property.id"
+            :image-src="property.imageSrc"
+            :title="property.title"
+            :description="property.description"
+            :features="property.features"
+            :price="property.price"
+            :details-link="property.detailsLink"
+            @view-details="handleViewDetails"
+          />
         </div>
-        <div class="home__FetueredProperties--card">
-          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
-          <div class="home__FetueredProperties--card-content">
-            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
-            <span class="home__FetueredProperties--card-description">
-              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
-              <a class="home__FetueredProperties--card-link">Read More</a>
-            </span>
-
-            <div class="home__FetueredProperties--card-elements">
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
-                4-Bedroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
-                3-Bathroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
-                Villa
-              </div>
-            </div>
-            <div class="home__FetueredProperties--card-price">
-              <span class="home__FetueredProperties--card-price_label">Price</span>
-              <span class="home__FetueredProperties--card-price_value">$550,000</span>
-            </div>
-            <button class="home__FetueredProperties--card-button">View Property Details</button>
-          </div>
+      </HomeSection>
+    </div>
+    <div class="home__section-wrapper">
+      <HomeSection
+        title="What Our Clients Say"
+        description="Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs."
+        button-text="View All Testimonials"
+        :show-pagination="testimonialsData.length > 3"
+        :current-page="testimonialsPagination.currentPage"
+        :total-pages="testimonialsPagination.totalPages"
+        @button-click="handleViewAll('Testimonials')"
+        @prev-page="prevPage(testimonialsPagination)"
+        @next-page="nextPage(testimonialsPagination)"
+      >
+        <div class="testimonial-cards-grid">
+          <TestimonialCard
+            v-for="testimonial in testimonialsData"
+            :key="testimonial.id"
+            :quote="testimonial.quote"
+            :author-name="testimonial.authorName"
+            :author-location="testimonial.authorLocation"
+            :author-image="testimonial.authorImage"
+            :rating="testimonial.rating"
+          />
         </div>
-        <div class="home__FetueredProperties--card">
-          <img src="/Villa.png" class="home__FetueredProperties--card-image" />
-          <div class="home__FetueredProperties--card-content">
-            <span class="home__FetueredProperties--card-title">Seaside Serenity Villa</span>
-            <span class="home__FetueredProperties--card-description">
-              A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood...
-              <a class="home__FetueredProperties--card-link">Read More</a>
-            </span>
-
-            <div class="home__FetueredProperties--card-elements">
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon1.png" class="home__FetueredProperties--card-feature-icon" />
-                4-Bedroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon2.png" class="home__FetueredProperties--card-feature-icon" />
-                3-Bathroom
-              </div>
-              <div class="home__FetueredProperties--card-feature">
-                <img src="/Icon3.png" class="home__FetueredProperties--card-feature-icon" />
-                Villa
-              </div>
-            </div>
-            <div class="home__FetueredProperties--card-price">
-              <span class="home__FetueredProperties--card-price_label">Price</span>
-              <span class="home__FetueredProperties--card-price_value">$550,000</span>
-            </div>
-            <button class="home__FetueredProperties--card-button">View Property Details</button>
-          </div>
+      </HomeSection>
+    </div>
+    <div class="home__section-wrapper">
+      <HomeSection
+        title="Frequently Asked Questions"
+        description="Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way."
+        button-text="View All FAQs"
+        :show-pagination="false"
+        @button-click="handleViewAll('FAQs')"
+      >
+        <div class="faq-items-list">
+          <FaqItem
+            v-for="faq in faqData"
+            :key="faq.id"
+            :question="faq.question"
+            :answer="faq.answer"
+          />
         </div>
-      </div>
-
-      <div class="home__FetueredProperties--page-switch">
-        <span>01 <span>of 10</span></span>
-        <button class="home__FetueredProperties--page-switch-button-arrow">
-          <img class="home__FetueredProperties--page-switch-arrow" src="/public/Vector (Stroke).png" />
-        </button>
-        <button>
-          <img class="home__FetueredProperties--page-switch-arrow" src="/public/Vector (Stroke2).png" />
-        </button>
-      </div>
+      </HomeSection>
     </div>
   </main>
 </template>
-
 <style scoped>
 .home {
   width: 100%;
+  overflow-x: hidden;
 }
-
 .home__container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
+  align-items: flex-start;
+  padding: 0 120px;
+  gap: 60px;
+  position: relative;
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .home__content {
-  max-width: 600px;
-  height: 622px;
-  margin-left: 120px;
+  flex: 1;
+  max-width: 610px;
+  padding-top: 100px;
 }
-
 .home__description {
-  margin-top: 100px;
   font-weight: 600;
   font-size: 46px;
   font-family: Urbanist, sans-serif;
-  font-weight: semi-bold;
   color: #ffffff;
-  line-height: 55.2px;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
-
 .home__text {
-  margin-top: 19px;
   font-size: 1rem;
-  width: 610px;
   color: #a89e9e;
+  line-height: 1.6;
+  margin-bottom: 40px;
 }
-
 .home__actions {
   display: flex;
   gap: 15px;
-  margin-top: 49px;
+  margin-bottom: 49px;
 }
-
 .home__button {
-  padding: 14px 20px;
-  font-size: 13.8px;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Urbanist, sans-serif;
   border-radius: 10px;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    color 0.3s ease;
+  border: 1px solid transparent;
 }
-
 .home__button--primary {
   background-color: rgba(20, 20, 20, 1);
   color: #ffffff;
-  border: 1px solid rgb(38, 38, 38);
+  border-color: rgb(38, 38, 38);
 }
-
 .home__button--primary:hover {
   background-color: #262626;
-  border-color: #333;
+  border-color: #444;
 }
-
 .home__button--secondary {
   background-color: rgba(112, 59, 247, 1);
   color: #ffffff;
-  border: 1px solid rgba(112, 59, 247, 0.8);
+  border-color: rgba(112, 59, 247, 0.8);
 }
-
 .home__button--secondary:hover {
   background-color: rgba(100, 50, 230, 1);
+  border-color: rgba(100, 50, 230, 1);
 }
-
-.home__info-cards {
-  display: flex;
-  gap: 16px;
-  margin-top: 49px;
-  width: 610px;
-  height: 99px;
+.home__image {
+  width: 50%;
+  max-width: 730px;
+  align-self: stretch;
 }
-
-.home__card {
-  width: 192px;
-  display: flex;
-  flex-direction: column;
-  padding: 14px 20px;
-  background-color: #1a1a1a;
-  border-radius: 9px;
-  border: 1px solid #262626;
-  text-align: left;
-}
-
-.home__card-value {
-  font-size: 30px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.home__card-text {
-  font-size: 1rem;
-  color: rgba(153, 153, 153, 1);
-}
-
 .home__image-img {
-  margin: 0;
-  width: 730px;
-  height: 622px;
-  gap: 0px;
-  opacity: 0px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
 .home__linkimage {
   position: absolute;
-  left: 47.2%;
-  margin-bottom: 295px;
+  transform: translateX(465%);
+  top: 20%;
   width: 129px;
   height: 129px;
+  z-index: 1;
 }
-
+.home__linkimage img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .home__card-links {
   width: 100%;
-  height: 190px;
   background-color: rgba(26, 26, 26, 1);
+  padding: 5px 0;
+  border-top: 1px solid #262626;
+  border-bottom: 1px solid #262626;
+  margin-top: 80px;
 }
-
 .home__card-links-container {
-  position: absolute;
-  border-top: 3px solid #262626;
-  border-bottom: 3px solid #262626;
-  margin: 5px 0;
   background-color: rgba(20, 20, 20, 1);
-  height: 180px;
   width: 100%;
+  margin: 0 auto;
+  padding: 15px 120px;
   display: flex;
-  gap: 13px;
-}
-
-.home__card-link {
-  color: #ffffff;
-  background-color: #1a1a1a;
-  border-radius: 10px;
-  box-shadow: 0 0 0 1px #262626;
-
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  width: 455px;
-  margin: 10px 0;
-  padding: 30px 16px 30px 16px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.home__card-link--with-offset {
-  margin-left: 10px;
-}
-
-.home__card-link--with-set {
-  margin-right: 10px;
-}
-
-.home__card-link-title {
-  font-family: Urbanist;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-}
-
-.home__card-link-img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 10px;
-}
-
-.home__card-link-arrow {
-  position: absolute;
-  top: 26px;
-  right: 26px;
-  width: 19px;
-  height: 19px;
-}
-
-.home__FetueredProperties {
-  margin-left: 120px;
-  margin-top: 90px;
-}
-
-.home__FetueredProperties--stars {
-  width: 54.72px;
-  height: 24px;
-  margin-left: -10px;
-  margin-top: -10px;
-  margin-bottom: 8px;
-}
-
-.home__FetueredProperties--text {
-  font-size: 38px;
-  line-height: 57px;
-  font-weight: 600;
-}
-
-.home__FetueredProperties--description {
-  width: 975px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: rgba(153, 153, 153, 1);
-  font-weight: 500;
-  margin-top: 10px;
-}
-
-.home__FetueredProperties--button {
-  padding: 14px 20px;
-  font-size: 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 500;
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-  background-color: rgba(26, 26, 26, 1);
-  color: #ffffff;
-  border: 1px solid rgb(38, 38, 38);
-  position: absolute;
-  margin-top: -50px;
-  right: 120px;
-}
-
-.home__FetueredProperties--button:hover {
-  background-color: rgba(100, 50, 230, 1);
-}
-.home__FetueredProperties--cards {
-  display: flex;
-  gap: 20px;
-}
-.home__FetueredProperties--card {
-  width: 413.33px;
-  height: 549px;
-  padding: 28.5px;
-  border-radius: 12px;
-  border: 2px solid rgba(38, 38, 38, 1);
-  background-color: rgba(20, 20, 20, 1);
-  margin-top: 60px;
-}
-
-.home__FetueredProperties--card-image {
-  border-radius: 10px;
-}
-
-.home__FetueredProperties--card-content {
-  display: flex;
   flex-wrap: wrap;
-  width: 353.33px;
-  height: 214px;
-  gap: 24px;
+  gap: 20px;
+  box-sizing: border-box;
 }
-
-.home__FetueredProperties--card-title {
-  margin-top: 20px;
-  width: 353.33px;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 30px;
+.home__section-wrapper {
+  padding: 90px 120px;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
-
-.home__FetueredProperties--card-description {
-  font-family: Urbanist;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: rgba(153, 153, 153, 1);
-  margin-top: -20px;
+.property-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
 }
-
-.home__FetueredProperties--card-link {
-  font-family: 'Urbanist', sans-serif;
-  font-size: 16px;
-  font-weight: 200;
-  line-height: 24px;
-  text-align: left;
-  text-decoration: underline;
-  text-underline-offset: 1px;
-  color: rgba(255, 255, 255, 1);
-  transition: color 0.3s ease;
+.testimonial-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
-
-.home__FetueredProperties--card-elements {
-  display: flex;
-  width: 353px;
-  height: 33px;
-  gap: 4px;
-}
-
-.home__FetueredProperties--card-feature {
-  display: flex;
-  background-color: rgba(26, 26, 26, 1);
-  border: 1px solid rgba(38, 38, 38, 1);
-  border-radius: 28px;
-  padding: 4px 14px 5px 13.5px;
-  opacity: 0px;
-  font-family: Urbanist;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 22px;
-}
-
-.home__FetueredProperties--card-feature-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-}
-
-.home__FetueredProperties--card-price {
+.faq-items-list {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
-
-.home__FetueredProperties--card-price_label {
-  font-family: Urbanist;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  color: rgba(153, 153, 153, 1);
+@media (max-width: 1024px) {
+  .home__container {
+    padding: 0 60px;
+    gap: 40px;
+  }
+  .home__card-links-container {
+    padding: 15px 60px;
+  }
+  .home__section-wrapper {
+    padding: 70px 60px;
+  }
 }
-
-.home__FetueredProperties--card-price_value {
-  font-family: Urbanist;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 30px;
+@media (max-width: 768px) {
+  .home__container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+    align-items: center;
+  }
+  .home__content {
+    max-width: 100%;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .home__description {
+    font-size: 36px;
+  }
+  .home__text {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+  .home__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 40px;
+  }
+  .home__image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    align-self: center;
+    order: -1;
+  }
+  .home__image-img {
+    height: auto;
+  }
+  .home__linkimage {
+    display: none;
+  }
+  .home__card-links {
+    margin-top: 40px;
+  }
+  .home__card-links-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 20px;
+    gap: 15px;
+  }
+  .home__section-wrapper {
+    padding: 50px 20px;
+  }
+  .property-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .testimonial-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
-
-.home__FetueredProperties--card-button {
-  width: 227.33px;
-  height: 49px;
-  margin-left: 16px;
-  border-radius: 8px;
-
-  font-family: Urbanist;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-
-  background-color: rgba(112, 59, 247, 1);
-  color: #ffffff;
-  border: 1px solid rgba(112, 59, 247, 0.8);
-}
-
-.home__FetueredProperties--card-button:hover {
-  background-color: rgba(100, 50, 230, 1);
-}
-
-.home__FetueredProperties--page-switch {
-  margin-top: 30px;
-  width: 1280px;
-  height: 60px;
-  border-top: 1px solid rgba(38, 38, 38, 1);
-
-  display: flex;
-  justify-content: space-between;
-  opacity: 0px;
+@media (max-width: 480px) {
+  .home__description {
+    font-size: 28px;
+  }
+  .home__text {
+    font-size: 0.85rem;
+  }
+  .home__button {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
 }
 </style>
