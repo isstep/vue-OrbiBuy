@@ -7,7 +7,6 @@ import HomeSection from '@/components/HomeSection.vue'
 import TestimonialCard from '@/components/TestimonialCard.vue'
 import FaqItem from '@/components/FaqItem.vue'
 
-
 const numbers = reactive({
   customers: 200,
   properties: 10,
@@ -379,7 +378,7 @@ function handleViewAll(section) {
   box-sizing: border-box;
 }
 .home__section-wrapper {
-  padding: 90px 120px;
+  padding: 40px 60px;
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;

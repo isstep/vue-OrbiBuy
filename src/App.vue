@@ -1,23 +1,23 @@
 <script setup>
-import { ref } from 'vue';
-import HeaderComponent from './components/HeaderComponent.vue';
-import BannerComponent from './components/BannerComponent.vue';
-
-const isBannerVisible = ref(true);
-
+import { ref } from 'vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import BannerComponent from './components/BannerComponent.vue'
+import AppFooter from './components/AppFooter.vue'
+const isBannerVisible = ref(true)
 function handleBannerClose() {
-  isBannerVisible.value = false;
+  isBannerVisible.value = false
 }
 </script>
-
 <template>
   <div class="app">
-    <BannerComponent @close="handleBannerClose" />
+    <BannerComponent v-if="isBannerVisible" @close="handleBannerClose" />
     <HeaderComponent />
-    <router-view></router-view>
+    <div class="app__content-area">
+      <router-view></router-view>
+    </div>
+    <AppFooter />
   </div>
 </template>
-
 <style scoped>
 .app {
   font-family: Arial, sans-serif;
@@ -25,19 +25,10 @@ function handleBannerClose() {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color:rgba(20, 20, 20, 1);
+  background-color: rgba(20, 20, 20, 1);
 }
-
-.app__content {
+.app__content-area {
+  flex-grow: 1;
   width: 100%;
-  max-width: 1920px;
-  padding: 20px;
-}
-
-.app__description {
-  font-size: 1.2rem;
-  text-align: center;
-  margin: 20px 0;
 }
 </style>
